@@ -35,8 +35,8 @@ int main()
   PID pid;
   // TODO: Initialize the pid variable.
   pid.Init(0.1, 4.0, 0.04);
-  
-  double max_steering_angle = 1.0; 
+
+  double max_steering = 1.0; 
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -64,12 +64,12 @@ int main()
 
           steer_value = pid.TotalError();
 
-          if (max_steering_angle < steer_value) {
-            steer_value = max_steering_angle;
+          if (max_steering < steer_value) {
+            steer_value = max_steering;
           }
 
-          if (-max_steering_angle > steer_value) {
-            steer_value = -max_steering_angle;
+          if (-max_steering > steer_value) {
+            steer_value = -max_steering;
           }
 
           // DEBUG
