@@ -29,7 +29,7 @@ void PID::UpdateError(double cte) {
     // p-term
     p_error = cte;
     // integral-term
-	i_error = i_error + cte;
+	i_error += cte;
 }
 
 double PID::TotalError() {
