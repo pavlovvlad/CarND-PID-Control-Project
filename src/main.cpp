@@ -60,7 +60,7 @@ int main()
           */
           pid.UpdateError(cte);
 
-          steer_value = pid.TotalError(cte);
+          steer_value = pid.TotalError();
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
