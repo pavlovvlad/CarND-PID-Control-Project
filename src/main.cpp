@@ -53,6 +53,8 @@ int main()
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
           double max_steering = 1.0;
+          // DEBUG
+          std::cout << "speed: " << speed << " angle: " << angle << std::endl;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
@@ -72,10 +74,10 @@ int main()
           }
 
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+          std::cout << "CTE: " << cte << " Steering Value: " << angle + steer_value << std::endl;
 
           json msgJson;
-          msgJson["steering_angle"] = steer_value;
+          msgJson["steering_angle"] = angle + steer_value;
           msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
