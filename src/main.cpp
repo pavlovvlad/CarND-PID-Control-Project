@@ -52,7 +52,7 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
-          double max_steering = 1.0;
+          double max_steering = 1.0f;
           // DEBUG
           std::cout << "speed: " << speed << " angle: " << angle << std::endl;
           /*
@@ -71,7 +71,7 @@ int main()
           }
 
           if (-max_steering > steer_value) {
-            steer_value = -max_steering;
+            steer_value = -1.0 * max_steering;
           }
 
           // DEBUG
