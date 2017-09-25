@@ -65,6 +65,7 @@ int main()
 
           steer_value = pid.TotalError();
 
+          // set limitations for the steering value calculated by PID-controller
           if (max_steering < steer_value) {
             steer_value = max_steering;
           }
@@ -74,7 +75,7 @@ int main()
           }
 
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << angle + steer_value << std::endl;
+          std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = angle + steer_value;
