@@ -52,7 +52,7 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
-          double max_steering = 1.0f;
+          double max_steering = 0.9;
           // DEBUG
           std::cout << "speed: " << speed << " angle: " << angle << std::endl;
           /*
@@ -64,7 +64,7 @@ int main()
           pid.UpdateError(cte);
 
           steer_value = pid.TotalError();
-/*
+
           // set limitations for the steering value calculated by PID-controller
           if (max_steering < steer_value) {
             steer_value = max_steering;
@@ -73,7 +73,7 @@ int main()
           if (-max_steering > steer_value) {
             steer_value = -1.0 * max_steering;
           }
-*/
+
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
