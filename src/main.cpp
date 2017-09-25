@@ -64,7 +64,7 @@ int main()
           pid.UpdateError(cte);
 
           steer_value = pid.TotalError();
-
+/*
           // set limitations for the steering value calculated by PID-controller
           if (max_steering < steer_value) {
             steer_value = max_steering;
@@ -73,7 +73,7 @@ int main()
           if (-max_steering > steer_value) {
             steer_value = -1.0 * max_steering;
           }
-
+*/
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
