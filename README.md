@@ -2,7 +2,24 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Effect each of the P, I, D components
+* P -component: proportional term is responsible for main part of controling of steering by means cross track error. 
+But in stand-alone application the p-controller leads to oscillations, so the car will drive damped sinus-trajectories, and by each curve the amplitude of oscillations will be increased.  
 
+* I -component: integral term helps to remove the systematic error like a bias in the system, which prevents to derive the reference trajectory. So the car will drive along the center line of the road.
+
+* D -component: differential term reduces/ removes the oscillations along the reference trajectora, which are unavoidable by using of p-term only. By higher values the change in direction will have more effect on the resulting steering and the car will approach the reference trajectory without overshooting.
+
+## Final hyperparameters (P, I, D coefficients)
+the final hyperparameters have been chosen by means of the manual tuning, to ensure that the car will stay on track in all curves.
+
+P = 0.1, seems to be enough to represent the dependency of steering in radians and cross track error in meters.
+I = 0.003, required due to some drift in steering detected in PD-mode. 
+D = 4.0, increasing of the value leads to higher jumps in steering in curves.
+
+Applying of the twiddle can lead to smooth driving trajectory of the ego-car on current track. 
+
+---
 ## Dependencies
 
 * cmake >= 3.5
